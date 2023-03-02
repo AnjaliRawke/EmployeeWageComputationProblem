@@ -5,9 +5,11 @@ public class EmployeeWage {
 		int IS_FULL_TIME = 1;
 		int IS_PART_TIME=2;
 		int EMP_RATE_PER_HOUR = 20;
+		int NUM_OF_WORKING_DAYS=20;
 		//variables
 		int empHrs = 0;
 		int empWage = 0;
+		int MonthlyWage;
 		//Computation
 		int empCheck =(int) (Math.floor(Math.random()*10)%3);
 		switch(empCheck)
@@ -23,7 +25,9 @@ public class EmployeeWage {
 				break;
 		}
 		empWage = empHrs * EMP_RATE_PER_HOUR;
-		System.out.println("emp wage: "+empWage);
+		System.out.println("Daily emp wage: "+empWage);
+		MonthlyWage=empWage*NUM_OF_WORKING_DAYS;
+		System.out.println("Monthly emp Wage: "+MonthlyWage);
 	}
 
 }
