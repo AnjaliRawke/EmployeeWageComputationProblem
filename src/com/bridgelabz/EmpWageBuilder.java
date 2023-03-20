@@ -72,6 +72,24 @@ public class EmpWageBuilder implements IEmpWageBuilder {
 		}
 		return totalWage;
 	}
+	public void printDailyWage(){
+		for(CompanyEmpWage companyEmpWage : this.companies){
+			int dailyWage = calculateWage(companyEmpWage);
+			companyEmpWage.setDailyWage(dailyWage);
+			//System.out.println("Daily Wages for: " + companyEmpWage.COMPANY_NAME + ": " + dailyWage);
+			System.out.println(companyEmpWage);
+		}
+	}
+	public int calculateWage(CompanyEmpWage companyEmpWage) {
+		int workingHrs, dailyWage = 0;
+		for (int day = 1, totalWorkingHrs = 0; day <= companyEmpWage.MAX_WORKING_DAYS
+				&& totalWorkingHrs <= companyEmpWage.MAX_WORKING_HRS; day++, totalWorkingHrs += workingHrs) {
+			int empType = generateEmployeeType();
+			workingHrs = getWorkingHrs(empType);
+			dailyWage = workingHrs * companyEmpWage.WAGE_PER_HR;
+		}
+		return dailyWage;
+	}
 
 	public static void main(String args[])
 	{
@@ -81,5 +99,7 @@ public class EmpWageBuilder implements IEmpWageBuilder {
 		employeeWageComputation.addCompany("Apple", 9, 10, 70);
 		employeeWageComputation.addCompany("Amazon", 19, 10, 150);
 		employeeWageComputation.calculateTotalWage();
+		employeeWageComputation.printDailyWage();
+
 	}
 }
