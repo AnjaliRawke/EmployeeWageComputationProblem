@@ -11,10 +11,10 @@ public class CompanyEmpWage {
 
 	CompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
 	{
-		COMPANY_NAME = companyName;
-		WAGE_PER_HR = wagePerHr;
-		MAX_WORKING_DAYS = maxWorkingDays;
-		MAX_WORKING_HRS = maxWorkingHrs;
+		this.COMPANY_NAME = companyName;
+		this.WAGE_PER_HR = wagePerHr;
+		this.MAX_WORKING_DAYS = maxWorkingDays;
+		this.MAX_WORKING_HRS = maxWorkingHrs;
 		totalEmpWage = 0;
 	}
 
