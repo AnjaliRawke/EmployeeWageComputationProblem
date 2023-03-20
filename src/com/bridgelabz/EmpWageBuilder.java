@@ -1,6 +1,12 @@
 package com.bridgelabz;
 
-public class EmpWageBuilder {
+interface IEmpWageBuilder
+{
+	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+
+	public void calculateTotalWage();
+}
+public class EmpWageBuilder implements IEmpWageBuilder {
 	// class constants
 	public static final int PART_TIME = 1;
 	public static final int FULL_TIME = 2;
@@ -15,7 +21,7 @@ public class EmpWageBuilder {
 		index = 0;
 	}
 
-	void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
+	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
 	{
 		companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
 	}
@@ -38,7 +44,7 @@ public class EmpWageBuilder {
 		}
 	}
 
-	void calculateTotalWage()
+	public void calculateTotalWage()
 	{
 		for (CompanyEmpWage company : companies)
 		{

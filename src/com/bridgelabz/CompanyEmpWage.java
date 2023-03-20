@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 public class CompanyEmpWage {
+	// instance constants
 	final String COMPANY_NAME;
 	final int WAGE_PER_HR;
 	final int MAX_WORKING_DAYS;
@@ -22,6 +23,7 @@ public class CompanyEmpWage {
 		this.totalEmpWage = totalEmpWage;
 	}
 
+	@Override
 	public String toString()
 	{
 		System.out.println("Details of " + COMPANY_NAME + " employee");
