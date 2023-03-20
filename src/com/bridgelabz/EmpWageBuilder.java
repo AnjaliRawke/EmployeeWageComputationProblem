@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
+
 interface IEmpWageBuilder
 {
 	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
@@ -11,19 +13,17 @@ public class EmpWageBuilder implements IEmpWageBuilder {
 	public static final int PART_TIME = 1;
 	public static final int FULL_TIME = 2;
 	// instance variables
-	int noOfCompanies, index;
-	CompanyEmpWage[] companies;
+	ArrayList<CompanyEmpWage> companies;
 
-	public EmpWageBuilder(int noOfCompanies)
+	public EmpWageBuilder()
 	{
-		this.noOfCompanies = noOfCompanies;
-		companies = new CompanyEmpWage[noOfCompanies];
-		index = 0;
+		companies = new ArrayList<>();
 	}
 
 	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
 	{
-		companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+		CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+		companies.add(company);
 	}
 
 	int generateEmployeeType()
@@ -75,10 +75,11 @@ public class EmpWageBuilder implements IEmpWageBuilder {
 
 	public static void main(String args[])
 	{
-		EmpWageBuilder employeeWageComputation = new EmpWageBuilder(3);
+		EmpWageBuilder employeeWageComputation = new EmpWageBuilder();
 		employeeWageComputation.addCompany("Microsoft", 4, 30, 100);
 		employeeWageComputation.addCompany("Google", 5, 40, 170);
 		employeeWageComputation.addCompany("Apple", 9, 10, 70);
+		employeeWageComputation.addCompany("Amazon", 19, 10, 150);
 		employeeWageComputation.calculateTotalWage();
 	}
 }
